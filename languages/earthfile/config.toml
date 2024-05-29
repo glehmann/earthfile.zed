@@ -1,0 +1,9 @@
+name = "Earthfile"
+grammar = "earthfile"
+path_suffixes = ["Earthfile"]
+line_comments = ["# "]
+brackets = [
+    { start = "{", end = "}", close = true, newline = true },
+    { start = "[", end = "]", close = true, newline = true },
+    { start = "\"", end = "\"", close = true, newline = false, not_in = ["string"] },
+]

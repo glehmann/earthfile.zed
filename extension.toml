@@ -1,0 +1,16 @@
+id = "earthfile"
+name = "Earthfile"
+version = "0.1.0"
+schema_version = 1
+authors = ["Gaëtan Lehmann <gaetan.lehmann@gmail.com>"]
+description = "Earthly language server and syntax highlighting"
+repository = "https://github.com/glehmann/earthfile.zed"
+
+[language_servers.earthlyls]
+name = "Earthly Language Server"
+language = "Earthfile"
+
+[grammars.earthfile]
+repository = "https://github.com/glehmann/tree-sitter-earthfile"
+commit = "336001d79dd62668088bc6fe6d72a774a449fa2d"
+
