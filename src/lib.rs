@@ -50,8 +50,9 @@ impl EarthfileExtension {
             },
         );
         let download_url = format!(
-            "https://github.com/glehmann/earthlyls/releases/download/{version}/{archive_basename}.tar.gz",
+            "https://github.com/glehmann/earthlyls/releases/download/{version}/{archive_basename}.{ext}",
             version = &release.version,
+            ext = if platform == zed::Os::Windows { "zip" } else { "tar.gz" }
         );
 
         let version_dir = format!("earthlyls-{}", release.version);
@@ -69,7 +70,11 @@ impl EarthfileExtension {
             zed::download_file(
                 &download_url,
                 &version_dir,
-                zed::DownloadedFileType::GzipTar,
+                if platform == zed::Os::Windows {
+                    zed::DownloadedFileType::Zip
+                } else {
+                    zed::DownloadedFileType::GzipTar
+                },
             )
             .map_err(|e| format!("failed to download file: {e}"))?;
 
